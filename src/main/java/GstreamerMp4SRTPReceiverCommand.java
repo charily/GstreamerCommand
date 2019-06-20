@@ -7,8 +7,8 @@ public class GstreamerMp4SRTPReceiverCommand {
     public static void main(String[] args) {
         Gst.init(new Version(1,16));
         Pipeline pipe = new Pipeline();
-        pipe = (Pipeline)Gst.parseLaunch("udpsrc port=9004"
-                                        +"! application/x-srtp,"
+        pipe = (Pipeline)Gst.parseLaunch("udpsrc port=9004 "
+                                        +"! application/x-srtp"
                                         +", payload=(int)103,ssrc=(uint)112233,roc=(uint)0"
                                         +", srtp-key=(buffer)4142434445464748494A4B4C4D4E4F505152535455565758595A31323334"
                                         +", srtp-cipher=(string)aes-128-icm,srtp-auth=(string)hmac-sha1-80"
@@ -16,7 +16,7 @@ public class GstreamerMp4SRTPReceiverCommand {
                                         +"! srtpdec "
                                         +"! rtph264depay "
                                         +"! decodebin "
-                                        +"! autovideosink ");
+                                        +"! autovideosink");
         pipe.play();
         MainLoop loop = new MainLoop();
         loop.run();

@@ -16,7 +16,7 @@ public class GstreamerMp4SRTPCommand {
                                                         +"! srtpenc key=\"4142434445464748494A4B4C4D4E4F505152535455565758595A31323334\" "
                                                         +"  rtp-cipher=aes-128-icm rtp-auth=hmac-sha1-80 "
                                                         +"  rtcp-cipher=aes-128-icm rtcp-auth=hmac-sha1-80 "
-                                                        +"! udpsink host=127.0.0.1 port=9004 ");
+                                                        +"! udpsink host=127.0.0.1 port=9004");
         pipe.play();
         MainLoop loop = new MainLoop();
         loop.run();
